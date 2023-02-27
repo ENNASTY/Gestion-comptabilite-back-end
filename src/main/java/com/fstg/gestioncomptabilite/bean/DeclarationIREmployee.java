@@ -21,6 +21,7 @@ public class DeclarationIREmployee {
     @ManyToOne
     private TauxIR tauxIR;
 
+<<<<<<< HEAD
     public TauxIR getTauxIR() {
         return tauxIR;
     }
@@ -28,6 +29,8 @@ public class DeclarationIREmployee {
     public void setTauxIR(TauxIR tauxIR) {
         this.tauxIR = tauxIR;
     }
+=======
+>>>>>>> 7411f171fc0a261d144a1ba66f7bfac23aed70cd
 
     public void setId(Long id) {
         this.id = id;
