@@ -50,7 +50,7 @@ public class DeclarationIR {
         return total;
     }
 
-    public void setTotal(Double total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 }
