@@ -17,5 +17,6 @@ public interface FactureDao extends JpaRepository<Facture,Long> {
     List<Facture> findByAnneeAndMoisAndTypeFactureRef(double annee, double mois ,String ref);
     List<Facture> findByAnneeAndTypeFactureRef(double annee ,String ref);
     List<Facture> findByTypeFactureRef(String ref);
+    List<Facture> findByAnneeTypeFactureLibelle(double annee,String libelle);
 
 }
