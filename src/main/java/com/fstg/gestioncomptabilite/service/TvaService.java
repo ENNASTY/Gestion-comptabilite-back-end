@@ -25,7 +25,12 @@ public class TvaService {
         return tvaDao.findAll();
     }
     public int save(Tva tva){
-        tvaDao.save(tva);
-        return 1;
+        if(findByRef(tva.getRef()) != null){
+            return -1;
+        }
+        else {
+            tvaDao.save(tva);
+            return 1;
+        }
     }
 }

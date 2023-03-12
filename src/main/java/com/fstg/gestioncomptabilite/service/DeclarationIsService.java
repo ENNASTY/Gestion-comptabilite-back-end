@@ -2,7 +2,6 @@ package com.fstg.gestioncomptabilite.service;
 
 import com.fstg.gestioncomptabilite.bean.DeclarationIS;
 import com.fstg.gestioncomptabilite.bean.Facture;
-import com.fstg.gestioncomptabilite.bean.TauxIS;
 import com.fstg.gestioncomptabilite.dao.DeclarationIsDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

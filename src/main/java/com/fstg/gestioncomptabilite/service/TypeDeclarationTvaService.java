@@ -38,7 +38,8 @@ public class TypeDeclarationTvaService {
         }
         else {
             typeDeclarationTvaDao.save(typeDeclarationTva);
+            return 1;
         }
-        return 1;
+
     }
 }
