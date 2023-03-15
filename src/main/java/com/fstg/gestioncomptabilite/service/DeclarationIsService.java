@@ -36,11 +36,11 @@ public class DeclarationIsService {
         else{
             double gain = 0;
             double charge = 0;
-            List<Facture> facturesC=factureService.findByAnneeTypeFactureLibelle(declarationIS.getAnnee(),"client");
+            List<Facture> facturesC=factureService.findByAnneeAndTypeFactureLibelle(declarationIS.getAnnee(),"client");
             for (Facture f: facturesC){
                 gain+= f.getMontantHorsTaxe();
             }
-            List<Facture> facturesF=factureService.findByAnneeTypeFactureLibelle(declarationIS.getAnnee(),"fournisseur");
+            List<Facture> facturesF=factureService.findByAnneeAndTypeFactureLibelle(declarationIS.getAnnee(),"fournisseur");
             for (Facture f: facturesF){
                 charge+= f.getMontantHorsTaxe();
             }

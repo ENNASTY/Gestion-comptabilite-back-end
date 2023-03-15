@@ -25,7 +25,7 @@ public class EmployeeService {
         return employeeDao.findAll();
     }
 
-    int save(Employee employee){
+    public int save(Employee employee){
         if (employeeDao.findByCin(employee.getCin())!= null){
             return -1;
         }

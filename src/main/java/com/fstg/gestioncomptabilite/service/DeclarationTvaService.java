@@ -65,7 +65,7 @@ public class DeclarationTvaService {
             }
             DeclarationTva myDeclarationTva = findByRef(declarationTva.getRef());
             for (Facture facture:factures){
-                if(facture.getTypeFacture().getLibelle().equals("client")){
+                if(facture.getTypeFacture().getlibelle().equals("client")){
                     tvaC+=facture.getmontantTva();
                     facture.setDeclarationTva(myDeclarationTva);
                     factureService.update(facture);

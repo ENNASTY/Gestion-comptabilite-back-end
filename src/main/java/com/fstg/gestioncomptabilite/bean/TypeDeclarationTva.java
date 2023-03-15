@@ -37,4 +37,5 @@ public class TypeDeclarationTva {
         this.libelle = libelle;
     }
 
+
 }

@@ -9,22 +9,29 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("Gestion-comptabilite/App/TYPEDECLARATIONTVA")
+@RequestMapping("Gestion-comptabilite/v1/typeDeclarationTva")
 public class TypeDeclarationTvaProvided {
     @GetMapping("/ref/{ref}")
     public TypeDeclarationTva findByRef(@PathVariable String ref) {
         return typeDeclarationTvaService.findByRef(ref);
     }
 
-   @DeleteMapping("/ref/{ref}")
-    public int deleteByRef(@PathVariable  String ref) {
+    @DeleteMapping("/ref/{ref}")
+    public int deleteByRef(@PathVariable String ref) {
         return typeDeclarationTvaService.deleteByRef(ref);
     }
-@GetMapping("/libelle/{libelle}")
-    public TypeDeclarationTva findByLibelle(@PathVariable  String libelle) {
+
+    @GetMapping("/libelle/{libelle}")
+    public TypeDeclarationTva findByLibelle(@PathVariable String libelle) {
         return typeDeclarationTvaService.findByLibelle(libelle);
     }
-@GetMapping("/")
+
+    @PostMapping("/")
+    public int save(@RequestBody TypeDeclarationTva typeDeclarationTva) {
+        return typeDeclarationTvaService.save(typeDeclarationTva);
+    }
+
+    @GetMapping("/")
     public List<TypeDeclarationTva> findAll() {
         return typeDeclarationTvaService.findAll();
     }

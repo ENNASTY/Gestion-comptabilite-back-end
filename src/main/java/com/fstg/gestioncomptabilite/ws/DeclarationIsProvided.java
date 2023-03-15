@@ -10,25 +10,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("Gestion-comptabilite/App/IS")
+@RequestMapping("Gestion-comptabilite/v1/declarationIs")
 public class DeclarationIsProvided {
 
-@GetMapping("/annee/{annee}")
+    @GetMapping("/annee/{annee}")
     public DeclarationIS findByAnnee(@PathVariable double annee) {
         return declarationIsService.findByAnnee(annee);
     }
 
-   @DeleteMapping("/annee/{annee}")
-   @Transactional
+    @DeleteMapping("/annee/{annee}")
+    @Transactional
     public int deleteByAnnee(@PathVariable double annee) {
         return declarationIsService.deleteByAnnee(annee);
     }
-@GetMapping("/")
+
+    @GetMapping("/")
     public List<DeclarationIS> findAll() {
         return declarationIsService.findAll();
     }
-@PostMapping("/")
-    public int save(@RequestBody  DeclarationIS declarationIS) {
+
+    @PostMapping("/")
+    public int save(@RequestBody DeclarationIS declarationIS) {
         return declarationIsService.save(declarationIS);
     }
 

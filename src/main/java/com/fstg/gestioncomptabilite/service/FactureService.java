@@ -53,14 +53,14 @@ public class FactureService {
         return factureDao.findByTypeFactureRef(ref);
     }
 
-    public List<Facture> findByAnneeTypeFactureLibelle(double annee, String libelle) {
-        return factureDao.findByAnneeTypeFactureLibelle(annee, libelle);
+    public List<Facture> findByAnneeAndTypeFactureLibelle(double annee, String libelle) {
+        return factureDao.findByAnneeAndTypeFactureLibelle(annee, libelle);
     }
 
     public List<Facture> findAll() {
         return factureDao.findAll();
     }
-    int save(Facture facture) {
+    public int save(Facture facture) {
         Tva tv = tvaService.findByRef(facture.getTva().getRef());
         facture.setTva(tv);
         Facture f=factureDao.findByRef(facture.getRef());
@@ -96,7 +96,7 @@ public class FactureService {
             return 4;
         }
     }
-    int update(Facture facture){
+    public int update(Facture facture){
         Tva tv = tvaService.findByRef(facture.getTva().getRef());
         facture.setTva(tv);
         if(tv == null){

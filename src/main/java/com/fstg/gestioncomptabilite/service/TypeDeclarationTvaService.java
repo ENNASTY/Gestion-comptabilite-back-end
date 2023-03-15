@@ -32,7 +32,7 @@ public class TypeDeclarationTvaService {
     public List<TypeDeclarationTva> findAll() {
         return typeDeclarationTvaDao.findAll();
     }
-    int save(TypeDeclarationTva typeDeclarationTva){
+    public int save(TypeDeclarationTva typeDeclarationTva){
         if(findByRef(typeDeclarationTva.getRef())!= null){
             return -1;
         }

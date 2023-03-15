@@ -37,7 +37,7 @@ public class TauxIrService {
         return montantIr;
 
     }
-    int save(TauxIR tauxIR) {
+    public int save(TauxIR tauxIR) {
         if (findByRef(tauxIR.getRef()) != null) {
             return -1;
         }

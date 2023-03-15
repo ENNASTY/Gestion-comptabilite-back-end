@@ -8,32 +8,35 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
-@RequestMapping("Gestion-comptabilite/App/DECLARATIONIREMPLOYEE")
+@RequestMapping("Gestion-comptabilite/v1/declarationIrEmployee")
 public class DeclarationIrEmployeeProvided {
     @GetMapping("/refEmp/{refEmp}")
-    public DeclarationIREmployee findByRefEmp(@PathVariable  String refEmp) {
+    public DeclarationIREmployee findByRefEmp(@PathVariable String refEmp) {
         return declarationIrEmployeeService.findByRefEmp(refEmp);
     }
-@GetMapping("/cin/{cin}")
+
+    @GetMapping("/emplyee/cin/{cin}")
     public DeclarationIREmployee findByEmployeeCin(@PathVariable String cin) {
         return declarationIrEmployeeService.findByEmployeeCin(cin);
     }
-@GetMapping("/ref/{ref}")
+
+    @GetMapping("/declarationIr/ref/{ref}")
     public List<DeclarationIREmployee> findByDeclarationIRRef(@PathVariable String ref) {
         return declarationIrEmployeeService.findByDeclarationIRRef(ref);
     }
 
-  @DeleteMapping("/cin/{cin}")
-  @Transactional
+    @DeleteMapping("/emplyee/cin/{cin}")
+    @Transactional
     public int deleteByEmployeeCin(@PathVariable String cin) {
         return declarationIrEmployeeService.deleteByEmployeeCin(cin);
     }
-@GetMapping("/")
+
+    @GetMapping("/")
     public List<DeclarationIREmployee> findAll() {
         return declarationIrEmployeeService.findAll();
     }
-
 
 
     @Autowired

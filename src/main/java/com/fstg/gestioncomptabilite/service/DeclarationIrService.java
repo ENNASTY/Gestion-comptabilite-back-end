@@ -29,8 +29,8 @@ public class DeclarationIrService {
         return declarationIrDao.findByMoisAndAnnee(mois, annee);
     }
     @Transactional
-    public int deletByMoisAndAnnee(double mois, double annee) {
-        return declarationIrDao.deletByMoisAndAnnee(mois, annee);
+    public int deleteByMoisAndAnnee(double mois, double annee) {
+        return declarationIrDao.deleteByMoisAndAnnee(mois, annee);
     }
 
     public List<DeclarationIR> findByAnnee(double annee) {

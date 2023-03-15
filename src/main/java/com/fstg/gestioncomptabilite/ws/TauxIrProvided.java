@@ -9,14 +9,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("Gestion-comptabilite/App/TAUXIR")
+@RequestMapping("Gestion-comptabilite/v1/tauxIr")
 public class TauxIrProvided {
     @GetMapping("/ref/{ref}")
     public TauxIR findByRef(@PathVariable String ref) {
         return tauxIrService.findByRef(ref);
     }
 
-  @DeleteMapping("/ref/{ref}")
+    @DeleteMapping("/ref/{ref}")
+    @Transactional
     public int deleteByRef(@PathVariable String ref) {
         return tauxIrService.deleteByRef(ref);
     }
@@ -24,9 +25,10 @@ public class TauxIrProvided {
     public List<TauxIR> findAll() {
         return tauxIrService.findAll();
     }
-@PutMapping("/salaire/{salaire}")
-    public double calculMontantIr(@RequestBody  double salaire) {
-        return tauxIrService.calculMontantIr(salaire);
+
+    @PostMapping("/")
+    public int save(@RequestBody TauxIR tauxIR) {
+        return tauxIrService.save(tauxIR);
     }
 
     @Autowired

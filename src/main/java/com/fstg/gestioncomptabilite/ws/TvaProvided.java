@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("Gestion-comptabilite/App/TVA")
+@RequestMapping("Gestion-comptabilite/v1/tva")
 public class TvaProvided {
     @GetMapping("/ref/{ref}")
     public Tva findByRef(@PathVariable String ref) {
@@ -20,11 +20,13 @@ public class TvaProvided {
     public int deleteByRef(@PathVariable String ref) {
         return tvaService.deleteByRef(ref);
     }
-@GetMapping("/")
+
+    @GetMapping("/")
     public List<Tva> findAll() {
         return tvaService.findAll();
     }
-@PostMapping("/")
+
+    @PostMapping("/")
     public int save(@RequestBody Tva tva) {
         return tvaService.save(tva);
     }

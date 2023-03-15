@@ -10,7 +10,7 @@ public class TypeFacture {
     @GeneratedValue
     private Long id;
     private String ref;
-    private String Libelle;
+    private String libelle;
 
     public String getRef() {
         return ref;
@@ -20,12 +20,12 @@ public class TypeFacture {
         this.ref = ref;
     }
 
-    public String getLibelle() {
-        return Libelle;
+    public String getlibelle() {
+        return libelle;
     }
 
-    public void setLibelle(String libelle) {
-        Libelle = libelle;
+    public void setlibelle(String libelle) {
+        libelle = libelle;
     }
 
     public void setId(Long id) {
