@@ -17,6 +17,7 @@ public class TypeFactureProvided {
     }
 
     @DeleteMapping("/ref/{ref}")
+    @Transactional
     public int deleteByRef(@PathVariable String ref) {
         return typeFactureService.deleteByRef(ref);
     }

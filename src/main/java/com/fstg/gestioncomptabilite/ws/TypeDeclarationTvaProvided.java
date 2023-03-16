@@ -17,6 +17,7 @@ public class TypeDeclarationTvaProvided {
     }
 
     @DeleteMapping("/ref/{ref}")
+    @Transactional
     public int deleteByRef(@PathVariable String ref) {
         return typeDeclarationTvaService.deleteByRef(ref);
     }

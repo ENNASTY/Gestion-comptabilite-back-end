@@ -3,14 +3,13 @@ package com.fstg.gestioncomptabilite.ws;
 import com.fstg.gestioncomptabilite.bean.Employee;
 import com.fstg.gestioncomptabilite.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("Gestion-comptabilite/v1/employee")
-public class EmloyeeProvided {
+public class EmployeeProvided {
     @GetMapping("/cin/{cin}")
     public Employee findByCin(@PathVariable String cin) {
         return employeeService.findByCin(cin);

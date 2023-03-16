@@ -22,6 +22,7 @@ public class TauxIrProvided {
         return tauxIrService.deleteByRef(ref);
     }
 
+    @GetMapping("/")
     public List<TauxIR> findAll() {
         return tauxIrService.findAll();
     }
