@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("Gestion-comptabilite/v1/employee")
 public class EmployeeProvided {
+
     @GetMapping("/cin/{cin}")
     public Employee findByCin(@PathVariable String cin) {
         return employeeService.findByCin(cin);
@@ -29,7 +30,7 @@ public class EmployeeProvided {
     private EmployeeService employeeService;
 
     @PostMapping("/")
-    public int save(@RequestBody Employee employee) {
+    public Employee save(@RequestBody Employee employee) {
         return employeeService.save(employee);
     }
 }

@@ -25,13 +25,14 @@ public class EmployeeService {
         return employeeDao.findAll();
     }
 
-    public int save(Employee employee){
+    public Employee save(Employee employee){
+        Employee res = null;
         if (employeeDao.findByCin(employee.getCin())!= null){
-            return -1;
+            return res;
         }
         else{
-            employeeDao.save(employee);
-            return 1;
+           res = employeeDao.save(employee);
+            return res;
         }
 
     }
