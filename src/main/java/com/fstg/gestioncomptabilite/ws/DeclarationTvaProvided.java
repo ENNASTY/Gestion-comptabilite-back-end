@@ -3,6 +3,8 @@ package com.fstg.gestioncomptabilite.ws;
 import com.fstg.gestioncomptabilite.bean.DeclarationTva;
 import com.fstg.gestioncomptabilite.service.DeclarationIsService;
 import com.fstg.gestioncomptabilite.service.DeclarationTvaService;
+import com.fstg.gestioncomptabilite.vo.DeclarationTvaVo1;
+import com.fstg.gestioncomptabilite.vo.DeclarationTvaVo2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +48,10 @@ public class DeclarationTvaProvided {
     @PostMapping("/")
     public int save(@RequestBody DeclarationTva declarationTva) {
         return declarationTvaService.save(declarationTva);
+    }
+    @PostMapping("/calcultva")
+    public DeclarationTvaVo2 calcultva(@RequestBody DeclarationTvaVo1 declarationTvaVo1) {
+        return declarationTvaService.calcultva(declarationTvaVo1);
     }
 
     @Autowired
