@@ -32,9 +32,9 @@ public class TauxIsService {
         for (TauxIS taux : tauxISList) {
             if (resultat >= taux.getResultatMin() && resultat <= taux.getResultatMax()) {
                 montantIs = resultat * (taux.getPourcentage() / 100);
-                if (montantIs < taux.getCotisationMin()) {
-                    montantIs = taux.getCotisationMin();
-                }
+            }
+            if (montantIs < taux.getCotisationMin()) {
+                montantIs = taux.getCotisationMin();
             }
         }
         return montantIs;

@@ -1,5 +1,4 @@
 package com.fstg.gestioncomptabilite.ws;
-
 import com.fstg.gestioncomptabilite.bean.DeclarationTva;
 import com.fstg.gestioncomptabilite.service.DeclarationIsService;
 import com.fstg.gestioncomptabilite.service.DeclarationTvaService;
@@ -46,7 +45,7 @@ public class DeclarationTvaProvided {
     }
 
     @PostMapping("/")
-    public int save(@RequestBody DeclarationTva declarationTva) {
+    public DeclarationTva save(@RequestBody DeclarationTva declarationTva) {
         return declarationTvaService.save(declarationTva);
     }
     @PostMapping("/calcultva")

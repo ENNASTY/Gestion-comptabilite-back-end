@@ -45,18 +45,18 @@ public class DeclarationTvaService {
     public List<DeclarationTva> findAll() {
         return declarationTvaDao.findAll();
     }
-    public int save(DeclarationTva declarationTva){
+    public DeclarationTva save(DeclarationTva declarationTva){
         declarationTva.setRef(System.currentTimeMillis()+"");
         if (findByAnneeAndMois(declarationTva.getAnnee(),declarationTva.getMois())!=null){
-            return -1;
+            return null;
         }
         if (findByAnneeAndTrim(declarationTva.getAnnee(),declarationTva.getTrim())!=null){
-            return -2;
+            return null;
         }
         TypeDeclarationTva t = typeDeclarationTvaService.findByRef(declarationTva.getTypeDeclarationTva().getRef());
         declarationTva.setTypeDeclarationTva(t);
         if (t==null) {
-            return -3;
+            return null;
         }
         else{
             declarationTvaDao.save(declarationTva);
@@ -86,7 +86,7 @@ public class DeclarationTvaService {
             dTva = tvaC - tvaP;
             myDeclarationTva.setDiffTva(dTva);
             declarationTvaDao.save(myDeclarationTva);
-            return 1;
+            return myDeclarationTva;
         }
     }
     public DeclarationTvaVo2 calcultva(DeclarationTvaVo1 declarationTvaVo1){
@@ -95,11 +95,11 @@ public class DeclarationTvaService {
         List<Facture> facturesachat = new ArrayList<Facture>();
         double tvacollecter = 0,tvadeductible = 0,differencetva = 0;
         if (declarationTvaVo1.getTypedeclarationtva().equals("TDTV1")){
-            facturesvente = factureService.findByAnneeAndTrimAndTypeFactureRef(declarationTvaVo1.getAnnee(),declarationTvaVo1.getTrim(),"ty-cl");
-            facturesachat = factureService.findByAnneeAndTrimAndTypeFactureRef(declarationTvaVo1.getAnnee(),declarationTvaVo1.getTrim(),"ty-fo");
+            facturesvente = factureService.findByAnneeAndTrimAndTypeFactureRef(declarationTvaVo1.getAnnee(),declarationTvaVo1.getTrim(),"cl");
+            facturesachat = factureService.findByAnneeAndTrimAndTypeFactureRef(declarationTvaVo1.getAnnee(),declarationTvaVo1.getTrim(),"fo");
         }else {
-            facturesvente = factureService.findByAnneeAndMoisAndTypeFactureRef(declarationTvaVo1.getAnnee(),declarationTvaVo1.getMois(),"ty-cl");
-            facturesachat = factureService.findByAnneeAndMoisAndTypeFactureRef(declarationTvaVo1.getAnnee(),declarationTvaVo1.getMois(),"ty-fo");
+            facturesvente = factureService.findByAnneeAndMoisAndTypeFactureRef(declarationTvaVo1.getAnnee(),declarationTvaVo1.getMois(),"cl");
+            facturesachat = factureService.findByAnneeAndMoisAndTypeFactureRef(declarationTvaVo1.getAnnee(),declarationTvaVo1.getMois(),"fo");
         }
         for (Facture facture:facturesvente) {
             tvacollecter += facture.getmontantTva();
@@ -113,6 +113,7 @@ public class DeclarationTvaService {
         declarationTvaVo2.setDifferencetva(differencetva);
         return declarationTvaVo2;
     }
+
 
 
 }

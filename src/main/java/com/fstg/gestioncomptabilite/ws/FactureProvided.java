@@ -69,7 +69,7 @@ public class FactureProvided {
     }
 
     @PostMapping("/")
-    public int save(@RequestBody Facture facture) {
+    public Facture save(@RequestBody Facture facture) {
         return factureService.save(facture);
     }
 

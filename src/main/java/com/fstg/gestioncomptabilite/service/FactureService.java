@@ -60,26 +60,27 @@ public class FactureService {
     public List<Facture> findAll() {
         return factureDao.findAll();
     }
-    public int save(Facture facture) {
+    public Facture save(Facture facture) {
         Tva tv = tvaService.findByRef(facture.getTva().getRef());
         facture.setTva(tv);
-        Facture f=factureDao.findByRef(facture.getRef());
+        Facture f=findByRef(facture.getRef());
         if(f != null){
-            return -1;
+            return null;
         }
         else if(tv == null){
-            return -2;
+            return null;
         }
         else{
             facture.setDeclarationIS(null);
             facture.setDeclarationTva(null);
+            facture.setTypeFacture(facture.getTypeFacture());
             facture.setmontantTva((facture.getMontantHorsTaxe() * facture.getTva().getValeur()) /100);
             facture.setmontantTtc(facture.getMontantHorsTaxe() + facture.getmontantTva());
             facture.setTrim(TrouverTrim(facture.getDateFacture()));
             facture.setMois(facture.getDateFacture().getMonth() + 1);
             facture.setAnnee(facture.getDateFacture().getYear() + 1900);
             factureDao.save(facture);
-            return 1;
+            return facture;
         }
     }
     public double TrouverTrim(Date date){
