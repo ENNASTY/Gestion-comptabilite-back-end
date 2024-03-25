@@ -40,13 +40,19 @@ public class TauxIsService {
         return montantIs;
     }
 
-    public int save(TauxIS tauxIS) {
-        if (findByRef(tauxIS.getRef()) != null) {
-            return -1;
-        } else {
-            tauxIsDao.save(tauxIS);
-            return 1;
+    public TauxIS save(TauxIS tauxIS) {
+        TauxIS res = null;
+
+        if (tauxIS.getRef() == null || tauxIS.getResultatMax()<tauxIS.getResultatMin()){
+            res= null;
         }
+
+        else if (findByRef(tauxIS.getRef()) == null) {
+            res =  tauxIsDao.save(tauxIS);
+        }
+        return res;
+
     }
+
 
 }

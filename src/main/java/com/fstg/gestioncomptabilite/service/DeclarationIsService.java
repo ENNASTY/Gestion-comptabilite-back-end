@@ -29,9 +29,9 @@ public class DeclarationIsService {
     public List<DeclarationIS> findAll() {
         return declarationIsDao.findAll();
     }
-    public int save(DeclarationIS declarationIS){
+    public DeclarationIS save(DeclarationIS declarationIS){
         if(findByAnnee(declarationIS.getAnnee()) != null){
-            return -1;
+            return null;
         }
         else{
             double gain = 0;
@@ -54,11 +54,9 @@ public class DeclarationIsService {
                 f.setDeclarationIS(declarationIS);
                 factureService.update(f);
             }
-            return 1;
+            return declarationIS;
 
         }
 
     }
-
-
 }

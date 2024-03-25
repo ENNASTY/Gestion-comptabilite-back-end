@@ -3,7 +3,6 @@ package com.fstg.gestioncomptabilite.ws;
 import com.fstg.gestioncomptabilite.bean.DeclarationIS;
 import com.fstg.gestioncomptabilite.service.DeclarationIsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +29,7 @@ public class DeclarationIsProvided {
     }
 
     @PostMapping("/")
-    public int save(@RequestBody DeclarationIS declarationIS) {
+    public DeclarationIS save(@RequestBody DeclarationIS declarationIS) {
         return declarationIsService.save(declarationIS);
     }
 

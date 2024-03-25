@@ -37,16 +37,17 @@ public class TauxIrService {
         return montantIr;
 
     }
-    public int save(TauxIR tauxIR) {
-        if (findByRef(tauxIR.getRef()) != null) {
-            return -1;
+    public TauxIR save(TauxIR tauxIR) {
+        TauxIR res = null;
+
+        if (tauxIR.getRef() == null || tauxIR.getSalaireMax()<tauxIR.getSalaireMin()){
+            res= null;
         }
-        if (tauxIR.getSalaireMax() < tauxIR.getSalaireMin()) {
-            return -2;
-        } else {
-            tauxIrDao.save(tauxIR);
-            return 1;
+
+        else if (findByRef(tauxIR.getRef()) == null) {
+            res =  tauxIrDao.save(tauxIR);
         }
+        return res;
 
     }
 }

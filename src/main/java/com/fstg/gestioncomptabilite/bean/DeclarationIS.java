@@ -1,9 +1,7 @@
 package com.fstg.gestioncomptabilite.bean;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 @Entity
 public class DeclarationIS {
@@ -15,7 +13,7 @@ public class DeclarationIS {
     private double charge;
     private double benifice;
     private double montantIS;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private TauxIS tauxIS;
     public void setId(Long id) {
         this.id = id;

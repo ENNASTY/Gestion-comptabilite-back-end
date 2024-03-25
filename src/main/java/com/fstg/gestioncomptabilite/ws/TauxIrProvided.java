@@ -28,10 +28,9 @@ public class TauxIrProvided {
     }
 
     @PostMapping("/")
-    public int save(@RequestBody TauxIR tauxIR) {
+    public TauxIR save(@RequestBody TauxIR tauxIR) {
         return tauxIrService.save(tauxIR);
     }
-
     @Autowired
     private TauxIrService tauxIrService;
 }

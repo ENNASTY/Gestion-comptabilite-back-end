@@ -29,7 +29,7 @@ public class TauxIsProvided {
     }
 
     @PostMapping("/")
-    public int save(@RequestBody TauxIS tauxIS) {
+    public TauxIS save(@RequestBody TauxIS tauxIS) {
         return tauxIsService.save(tauxIS);
     }
 
